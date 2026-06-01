@@ -268,5 +268,17 @@
   </div>
 </footer>
 
+<script>
+  // Track inquiry clicks as a conversion event in GA4.
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="mailto:blindfolded@justinalydia.com"]');
+    if (link && typeof gtag === 'function') {
+      gtag('event', 'inquire_click', {
+        link_location: link.closest('footer') ? 'footer' : 'cta'
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
